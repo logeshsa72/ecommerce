@@ -19,15 +19,13 @@ export const cartslice = createSlice({
         ...state.list.slice(index + 1),
       ];
     },
-   modifyItem: (state, {payload}) =>{
-    const index = state.list.findIndex(
-        (product) => product.id === payload.id
-      );
-      state.list = [
-       {...state.list.slice [index],count :payload.count},
-        ...state.list.slice(index + 1),
-      ];
-   }
+    modifyItem: (state, { payload }) => {
+      const index = state.list.findIndex((product) => product.id === payload.id);
+    
+      if (index !== -1) {
+        state.list[index].count = payload.count;
+      }
+    },
 
   },
 });
